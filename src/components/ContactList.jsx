@@ -1,39 +1,19 @@
-const contacts = [
-	{
-		id: 1,
-		name: "Nii Aryeh",
-		number: "0204733113",
-		image: "https://i.pravatar.cc/48?u=499476",
-	},
-	{
-		id: 2,
-		name: "Osei Boateng",
-		number: "05512334567",
-		image: "https://i.pravatar.cc/48?u=499476",
-	},
-	{
-		id: 3,
-		name: "Jennson",
-		number: "02445938213",
-		image: "https://i.pravatar.cc/48?u=499476",
-	},
-];
-
-export default function ContactList() {
+export default function ContactList({ contacts }) {
 	return (
 		<div id="contactlist">
 			{contacts.map((x) => (
-				<Contact name={x.name} number={x.number} key={x.id} image={x.image} />
+				<Contact name={x.firstName} number={x.phone} key={x.id} />
 			))}
 		</div>
 	);
 }
 
-function Contact({ name, number, image }) {
+function Contact({ name, number }) {
 	return (
 		<div className="contact d-flex align-items-center">
-			<div className="contact-img">
-				<img src={image} alt={name} />
+			<div className="contact-img d-flex justify-content-center align-items-center">
+				{/* <img src={image} alt={name} /> */}
+				<div className="initials">{name[0]}</div>
 			</div>
 			<div className="contact-details ms-3">
 				<div className="name">{name}</div>

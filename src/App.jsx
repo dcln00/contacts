@@ -1,19 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import ContactList from "./components/ContactList";
+import AddContact from "./components/AddContact";
 
 const App = () => {
-	// const [] = useState("");
+	const [contacts, setContacts] = useState([]);
+	const [showAddForm, setShowAddForm] = useState(false);
+
+	useEffect(() => {
+		localStorage.setItem("dataKey", JSON.stringify(contacts));
+	}, [contacts]);
+
+	function handleAddContacts(contact) {
+		setContacts((x) => [...x, contact]);
+		setShowAddForm(false)
+	}
+
+	function handleAddForm() {
+		setShowAddForm((x) => !x);
+	}
 
 	return (
 		<div className="app">
-			<Header />
+			<Header onClick={handleAddForm} onShowAddForm={showAddForm} />
 			<main className="container">
 				<div className="row">
 					<div className="col-sm-5">
-						<ContactList />
+						<ContactList contacts={contacts} />
 					</div>
-					<div className="col-sm-7"></div>
+					<div className="col-sm-7">
+						{showAddForm && <AddContact onAddContact={handleAddContacts} />}
+					</div>
 				</div>
 			</main>
 		</div>

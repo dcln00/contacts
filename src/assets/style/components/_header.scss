@@ -15,5 +15,11 @@ Header {
 		width: 30px;
 		height: 30px;
 		border-radius: 50px;
+		transition: ease .5s;
+		cursor: pointer;
+	}
+
+	.button-clicked {
+		transform: rotate(45deg);
 	}
 }

@@ -1,0 +1,8 @@
+@mixin button {
+	background-color: color(accept);
+	color: color(white);
+	box-shadow: none;
+	border: none;
+	padding: .5rem 1rem;
+	border-radius: 10px;
+}

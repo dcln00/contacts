@@ -6,41 +6,45 @@
 @import 'base/reset';
 // components
 @import 'components/header';
+@import 'components/contactlist';
 
-#contactlist {
 
-	.contact {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
+#addcontact {
+	background-color: color(background);
+	padding: 2rem;
+	border-radius: 20px;
 
-		.contact-img {
-			background-color: color(text);
-			width: 50px;
-			height: 50px;
-			border-radius: 50px;
-			overflow: hidden;
+	h3 {
+		text-transform: uppercase;
+		font-size: 1rem;
+		padding: 0 0 1rem 0;
+		font-weight: 600;
+	}
 
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-		}
-	
-		.contact-details {
-			.name {
-				color: color(text);
-				font-weight: 600;
-			}
-		}
-	
-		button {
-			background-color: color(accept);
-			color: color(white);
-			box-shadow: none;
-			border: none;
-			padding: .5rem 1rem;
-			border-radius: 10px;
-		}
+	input {
+		width: 100%;
+		border: none;
+		padding: .6rem;
+		margin-top: .5rem;
+		margin-bottom: 1.2rem;
+		outline: none;
+		text-transform: capitalize;
+	}
+
+	input[type="email"] {
+		text-transform: lowercase;
+	}
+
+	textarea {
+		width: 100%;
+		border: none;
+		resize: none;
+		outline: none;
+		padding: .6rem;
+	}
+
+	button {
+		@include button;
+		width: 100%;
 	}
 }
