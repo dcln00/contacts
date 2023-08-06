@@ -1,0 +1,17 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+:root {
+	overflow-x: hidden;
+	transition: all 0.5s;
+	font-size: 14px;
+}
+
+body {
+	font-family: $body-font;
+	color: color(text);
+}
