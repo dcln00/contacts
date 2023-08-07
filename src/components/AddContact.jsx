@@ -1,26 +1,25 @@
 import { useState } from "react";
 
-export default function AddContact({onAddContact}) {
+export default function AddContact({ onAddContact }) {
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
 	const [location, setLocation] = useState("");
 	const [birthday, setBirthday] = useState("");
-	const [tags, setTags] = useState("")
-	const [notes, setNotes] = useState("");
+	const [tags, setTags] = useState("");
+	const [notes, setNotes] = useState(``);
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		const id = Math.random().toString(16).slice(2, 7)
+		const id = Math.random().toString(16).slice(2, 7);
 
-		if (!firstName || !lastName || !phone )
-			return;
+		if (!firstName || !lastName || !phone) return;
 
 		const contact = {
 			id,
-			firstName,
-			lastName,
+			firstName: firstName.replace(/^./, firstName[0].toUpperCase()),
+			lastName: lastName.replace(/^./, lastName[0].toUpperCase()),
 			phone,
 			email,
 			location,
@@ -29,7 +28,7 @@ export default function AddContact({onAddContact}) {
 			notes,
 		};
 
-		onAddContact(contact)
+		onAddContact(contact);
 
 		setFirstName("");
 		setLastName("");
@@ -37,9 +36,8 @@ export default function AddContact({onAddContact}) {
 		setEmail("");
 		setLocation("");
 		setBirthday("");
-		setTags("")
-		setNotes("");
-		
+		setTags("");
+		setNotes(``);
 	}
 
 	return (
@@ -54,6 +52,7 @@ export default function AddContact({onAddContact}) {
 							type="text"
 							value={firstName}
 							onChange={(e) => setFirstName(e.target.value)}
+							maxLength="14"
 							required
 						/>
 					</div>
@@ -64,6 +63,7 @@ export default function AddContact({onAddContact}) {
 							type="text"
 							value={lastName}
 							onChange={(e) => setLastName(e.target.value)}
+							maxLength="14"
 							required
 						/>
 					</div>
@@ -71,8 +71,12 @@ export default function AddContact({onAddContact}) {
 						<label>Phone Number</label>
 						<br />
 						<input
-							type="text"
-							value={phone}
+							type="tel"
+							value={phone.replace(
+								/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/,
+								"$1$2$3 $4$5$6 $7$8$9$10"
+							)}
+							// pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
 							onChange={(e) => setPhone(e.target.value)}
 							required
 						/>

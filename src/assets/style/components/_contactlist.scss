@@ -1,8 +1,8 @@
 #contactlist {
 	
 	.contact {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
+		padding: 1rem 1rem;
+		border-radius: 20px;
 
 		.contact-img {
 			background-color: color(text);
@@ -39,5 +39,9 @@
 		.selected {
 			background-color: color(decline);
 		}
+	}
+
+	.selected {
+		background-color: color(background);
 	}
 }

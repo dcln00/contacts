@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import ContactList from "./components/ContactList";
 import AddContact from "./components/AddContact";
 import Contact from "./components/Contact";
+import Welcome from "./components/Welcome";
 
 const initialContact = [
 	{
@@ -13,7 +14,9 @@ const initialContact = [
 		email: "demo@demo.io",
 		location: "Accra, Ghana",
 		birthday: "8th July",
-		notes: "Demo Contact. Delete Me :)",
+		notes: `Demo Contact. Delete Me :)
+	
+Contacts was created and developed by Nii Aryeh.`,
 	},
 ];
 
@@ -51,25 +54,32 @@ const App = () => {
 			"Are you sure you want to delete this contact?"
 		);
 
-		if (confirmed)
+		if (confirmed) {
 			setContacts((contacts) => contacts.filter((x) => x.id !== id));
-
-		setSelected(null);
+			setSelected(null);
+		} else {
+			setSelected(selected);
+		}
 	}
 
 	return (
 		<div className="app">
-			<Header onClick={handleAddForm} onShowAddForm={showAddForm} />
-			<main className="container">
-				<div className="row">
-					<div className="col-sm-5">
+			<Header
+				onClick={handleAddForm}
+				onShowAddForm={showAddForm}
+				contacts={contacts}
+			/>
+			<main>
+				<div className="main row">
+					<div className="col-md-5">
 						<ContactList
 							contacts={contacts}
 							onSelected={handleSelected}
 							selected={selected}
 						/>
 					</div>
-					<div className="col-sm-7">
+					<div className="col-md-7">
+						{!showAddForm && !selected && <Welcome onClick={handleAddForm}/>}
 						{showAddForm && <AddContact onAddContact={handleAddContacts} />}
 						{selected && (
 							<Contact selected={selected} onDelete={handleDelete} />

@@ -8,55 +8,7 @@
 @import 'components/header';
 @import 'components/contactlist';
 @import 'components/addcontactform';
-
-
-#contact {
-	background-image: linear-gradient(color(background), color(white));
-	padding: 2rem;
-	border-radius: 20px;
-
-	.contact-header {
-		padding-bottom: 2rem;
-
-		.image {
-			width: 70px;
-			height: 70px;
-			background-color: color(text);
-			border-radius: 50px;
-
-			.initials {
-				color: color(background);
-				font-size: 1.6rem;
-				line-height: 0px;
-				letter-spacing: 0em;
-			}
-
-		}
-
-		.details {
-			.name {
-				color: color(text);
-				font-weight: 600;
-				font-size: 1.2rem;
-			}
-		}
-	}
-
-	.contact-details {
-		padding-bottom: 2rem;
-
-		.detail {
-			padding-bottom: 1rem;
-
-			.title {
-				font-weight: 500;
-			}
-		}
-	}
-
-	button {
-		@include button;
-		background-color: color(decline);
-		float: right;
-	}
-}
+@import 'components/contact';
+@import 'components/welcome';
+// mobile
+@import 'base/mq';

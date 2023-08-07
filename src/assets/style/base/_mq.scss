@@ -1,0 +1,23 @@
+@media screen and (max-width: $breakpoint-mp) {
+	.app {
+		main {
+			.main.row {
+				flex-direction: column-reverse;
+			}
+
+			#addcontact, #contact, #welcome {
+				margin-bottom: 2rem;
+			}
+
+			#welcome {
+				display: none !important;
+			}
+
+			#addcontact {
+				button {
+					margin-top: 1.5rem;
+				}
+			}
+		}
+	}
+}

@@ -19,14 +19,27 @@ function Contact({ contact, selected, onSelected }) {
 	const select = selected?.id === contact.id;
 
 	return (
-		<div className="contact d-flex align-items-center">
+		<div
+			className={
+				select
+					? "contact d-flex align-items-center selected"
+					: "contact d-flex align-items-center"
+			}
+		>
 			<div className="contact-img d-flex justify-content-center align-items-center">
 				{/* <img src={image} alt={name} /> */}
-				<div className="initials">{contact.firstName[0]}</div>
+				<div className="initials">{contact.firstName[0].toUpperCase()}</div>
 			</div>
 			<div className="contact-details ms-3">
-				<div className="name">{contact.firstName}</div>
-				<div className="number">{contact.phone}</div>
+				<div className="name">
+					{contact.firstName.replace(/^./, contact.firstName[0].toUpperCase())}
+				</div>
+				<div className="number">
+					{contact.phone.replace(
+						/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/,
+						"$1$2$3 $4$5$6 $7$8$9$10"
+					)}
+				</div>
 			</div>
 			<Button
 				onClick={() => {

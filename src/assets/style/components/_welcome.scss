@@ -1,0 +1,24 @@
+#welcome {
+	background-image: linear-gradient(color(background), color(white));
+	padding: 2rem;
+	border-radius: 20px;
+	height: 50vh;
+	text-align: center;
+
+	.welcome-text {
+		font-weight: 300;
+		text-transform: uppercase;
+		font-size: 1.2rem;
+	}
+
+	.welcome-text:nth-child(2) {
+		font-weight: 600;
+	}
+
+	.inner {
+		button {
+			@include button;
+			margin-top: 1.3rem;
+		}
+	}
+}
