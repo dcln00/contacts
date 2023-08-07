@@ -5,8 +5,11 @@
 				flex-direction: column-reverse;
 			}
 
-			#addcontact, #contact, #welcome {
+			#addcontact,
+			#contact,
+			#welcome {
 				margin-bottom: 2rem;
+				position: static;
 			}
 
 			#welcome {
