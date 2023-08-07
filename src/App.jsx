@@ -69,7 +69,7 @@ const App = () => {
 				onShowAddForm={showAddForm}
 				contacts={contacts}
 			/>
-			<main>
+			<main className="container">
 				<div className="main row">
 					<div className="col-md-5">
 						<ContactList
