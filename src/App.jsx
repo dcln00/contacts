@@ -23,7 +23,12 @@ const App = () => {
 	const [showAddForm, setShowAddForm] = useState(false);
 
 	useEffect(() => {
-		localStorage.setItem("key", JSON.stringify(contacts));
+		const data = window.localStorage.getItem("contactsKey");
+		if (data !== null) setContacts(JSON.parse(data));
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("contactsKey", JSON.stringify(contacts));
 	}, [contacts]);
 
 	function handleAddContacts(contact) {
@@ -42,11 +47,13 @@ const App = () => {
 	}
 
 	function handleDelete(id) {
-		const confirmed = window.confirm('Are you sure you want to delete this contact?')
+		const confirmed = window.confirm(
+			"Are you sure you want to delete this contact?"
+		);
 
-		if(confirmed)
+		if (confirmed)
 			setContacts((contacts) => contacts.filter((x) => x.id !== id));
-		
+
 		setSelected(null);
 	}
 

@@ -32,9 +32,9 @@ function Contact({ contact, selected, onSelected }) {
 				onClick={() => {
 					onSelected(contact);
 				}}
-				customClass={selected ? "ms-auto selected" : "ms-auto"}
+				customClass={select ? "ms-auto selected" : "ms-auto"}
 			>
-				{!selected ? "View" : "Close"}
+				{!select ? "View" : "Close"}
 			</Button>
 		</div>
 	);
