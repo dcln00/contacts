@@ -1,25 +1,41 @@
-export default function ContactList({ contacts }) {
+import Button from "./Button";
+
+export default function ContactList({ selected, contacts, onSelected }) {
 	return (
 		<div id="contactlist">
 			{contacts.map((x) => (
-				<Contact name={x.firstName} number={x.phone} key={x.id} />
+				<Contact
+					contact={x}
+					key={x.id}
+					onSelected={onSelected}
+					selected={selected}
+				/>
 			))}
 		</div>
 	);
 }
 
-function Contact({ name, number }) {
+function Contact({ contact, selected, onSelected }) {
+	const select = selected?.id === contact.id;
+
 	return (
 		<div className="contact d-flex align-items-center">
 			<div className="contact-img d-flex justify-content-center align-items-center">
 				{/* <img src={image} alt={name} /> */}
-				<div className="initials">{name[0]}</div>
+				<div className="initials">{contact.firstName[0]}</div>
 			</div>
 			<div className="contact-details ms-3">
-				<div className="name">{name}</div>
-				<div className="number">{number}</div>
+				<div className="name">{contact.firstName}</div>
+				<div className="number">{contact.phone}</div>
 			</div>
-			<button className="ms-auto">View</button>
+			<Button
+				onClick={() => {
+					onSelected(contact);
+				}}
+				customClass={selected ? "ms-auto selected" : "ms-auto"}
+			>
+				{!selected ? "View" : "Close"}
+			</Button>
 		</div>
 	);
 }

@@ -7,6 +7,7 @@ export default function AddContact({onAddContact}) {
 	const [email, setEmail] = useState("");
 	const [location, setLocation] = useState("");
 	const [birthday, setBirthday] = useState("");
+	const [tags, setTags] = useState("")
 	const [notes, setNotes] = useState("");
 
 	function handleSubmit(e) {
@@ -24,6 +25,7 @@ export default function AddContact({onAddContact}) {
 			email,
 			location,
 			birthday,
+			tags,
 			notes,
 		};
 
@@ -35,6 +37,7 @@ export default function AddContact({onAddContact}) {
 		setEmail("");
 		setLocation("");
 		setBirthday("");
+		setTags("")
 		setNotes("");
 		
 	}
@@ -83,7 +86,7 @@ export default function AddContact({onAddContact}) {
 							onChange={(e) => setEmail(e.target.value)}
 						/>
 					</div>
-					<div className="col-sm-6">
+					<div className="col-sm-4">
 						<label>Location</label>
 						<br />
 						<input
@@ -92,13 +95,22 @@ export default function AddContact({onAddContact}) {
 							onChange={(e) => setLocation(e.target.value)}
 						/>
 					</div>
-					<div className="col-sm-6">
+					<div className="col-sm-4">
 						<label>Birthday</label>
 						<br />
 						<input
 							type="text"
 							value={birthday}
 							onChange={(e) => setBirthday(e.target.value)}
+						/>
+					</div>
+					<div className="col-sm-4">
+						<label>Tags</label>
+						<br />
+						<input
+							type="text"
+							value={tags}
+							onChange={(e) => setTags(e.target.value)}
 						/>
 					</div>
 					<div className="col-sm-9">

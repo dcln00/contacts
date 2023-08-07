@@ -17,6 +17,10 @@ Header {
 		border-radius: 50px;
 		transition: ease .5s;
 		cursor: pointer;
+
+		&::selection {
+			background-color: transparent;
+		}
 	}
 
 	.button-clicked {
