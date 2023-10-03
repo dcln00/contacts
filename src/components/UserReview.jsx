@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import StarRating from "./StarRating";
 
-function UserReview({name, children, rating = 5, link, }) {
+function UserReview({name, children, rating = 5, link }) {
 	return (
 		<div className="col-sm-4">
 			<div className="review-component">
