@@ -1,0 +1,69 @@
+#settings {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+	background-color: rgba(54, 54, 54, 0.336);
+	// opacity: .5;
+	backdrop-filter: blur(2.3px);
+	transition: 0s;
+
+	.settings-modal {
+		width: 644px;
+		background-color: color(background);
+		padding: 2rem;
+		border-radius: 20px;
+
+		.button {
+			cursor: pointer;
+			transform: rotate(45deg);
+		}
+
+		.settings-body {
+
+			select {
+				width: 100%;
+				border: none;
+				padding: .6rem;
+				margin-top: .7rem;
+				margin-bottom: 1.2rem;
+				outline: none;
+				text-transform: capitalize;
+				color: color(text);
+				background-color: color(white);
+
+				option {
+					font-weight: 100;
+				}
+			}
+
+			.delete-button {
+				@include button;
+				width: 100%;
+				background-color: color(decline);
+				border-radius: 0;
+				cursor: pointer;
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+
+		.settings-footer {
+			padding-top: 2rem;
+
+			i.dark-mode {
+				color: #fff;
+			}
+
+			button {
+				@include button;
+			}
+
+			button.dark-mode {
+				@include button;
+				background-color: #fff !important;
+				color: #121212;
+			}
+		}
+	}
+}

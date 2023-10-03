@@ -1,0 +1,29 @@
+@import '../abstracts/mixins';
+@import '../abstracts/colors';
+
+.header {
+	position: absolute;
+	z-index: 10;
+	color: color(jumbo-txt);
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+
+	.logo {
+		@include logo;
+		color: color(jumbo-txt);
+	}
+
+	.cta {
+		@include button;
+		background-color: #44cc95;
+	}
+
+	.login {
+		@include button;
+		background-color: transparent;
+
+		&:hover {
+			background-color: transparent;
+		}
+	}
+}

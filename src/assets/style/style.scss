@@ -4,11 +4,29 @@
 @import 'abstracts/colors';
 @import 'abstracts/mixins';
 @import 'base/reset';
-// components
-@import 'components/header';
-@import 'components/contactlist';
-@import 'components/addcontactform';
-@import 'components/contact';
-@import 'components/welcome';
+// layout
+@import 'layout/index';
+@import 'layout/app';
+@import 'layout/login';
 // mobile
 @import 'base/mq';
+
+#background-wrapper {
+	background-color: color(white);
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.dark-mode {
+	background-color: #222222 !important;
+	transition: background-color .3s;
+}
+
+.light-mode {
+	background-color: #fff;
+	transition: background-color .3s;
+}

@@ -1,0 +1,25 @@
+#learn-more {
+	@include component;
+	padding-bottom: $padding-half;
+
+	.title {
+		@include title;
+	}
+
+	.desc {
+		width: 40%;
+		text-align: center;
+		margin: 0 auto;
+		padding: {
+			top: .9rem;
+			bottom: 2rem;
+		} 
+	}
+
+	.cta {
+		@include button;
+		display: block;
+		margin: 0 auto;
+	}
+
+}

@@ -1,12 +1,39 @@
-export default function Contact({ selected, onDelete }) {
+import { useEffect } from "react";
+import { useDarkMode } from "../context/DarkModeContext";
+import Button from "./Button";
+
+const darkTheme = [
+	{
+		backgroundImage: 'linear-gradient(#1e1e1e, #1e1e1e)',
+		color: '#ededed'
+	},
+	{
+		backgroundColor: "#222222",
+		// color: "#ededed",
+	},
+	{
+		backgroundColor: "#ededed",
+		color: "#222222",
+	},
+];
+
+export default function Contact({ selected, onDelete, onEdit }) {
+	const {darkMode} = useDarkMode()
+
+	useEffect(() => {
+		document.title = `${selected.firstName} - Contacts by Nii Aryeh`
+
+		return () => document.title = 'Contacts by Nii Aryeh'
+	}, [selected])
+
 	return (
-		<div id="contact">
+		<div id="contact" style={darkMode ? darkTheme.at(0) : {}}>
 			<div className="contact-header d-flex align-items-center">
-				<div className="image d-flex justify-content-center align-items-center">
-					<div className="initials">{selected.firstName[0].toUpperCase()}</div>
+				<div className="image d-flex justify-content-center align-items-center" style={darkMode ? darkTheme.at(2) : {}}>
+					<div className="initials" style={darkMode ? darkTheme.at(2) : {}}>{selected.firstName[0].toUpperCase()}</div>
 				</div>
 				<div className="details ms-4">
-					<div className="name">
+					<div className="name" style={darkMode ? {color: '#ededed'} : {}}>
 						{selected.firstName} {selected.lastName}
 					</div>
 					<div className="number">
@@ -51,14 +78,17 @@ export default function Contact({ selected, onDelete }) {
 						</div>
 						<div className="notes detail">
 							<div className="title">Notes</div>
-							<div className="notes deet">
+							<div className="notes deet" style={darkMode ? darkTheme.at(1) : {}} >
 								{!selected.notes ? "-" : selected.notes}
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<button onClick={() => onDelete(selected.id)}>Delete</button>
+			<div className="buttons">
+			<Button onClick={() => onEdit(selected.id)} customStyle={darkMode ? darkTheme.at(2) : {}}>Edit</Button>
+			<Button customClass='ms-3' onClick={() => onDelete(selected.id)}>Delete</Button>
+			</div>
 		</div>
 	);
 }

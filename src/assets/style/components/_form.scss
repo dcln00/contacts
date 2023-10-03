@@ -1,0 +1,78 @@
+#entry {
+	.form {
+		position: relative;
+		overflow: hidden;
+
+		img.leaf{
+			position: absolute;
+			width: 40%;
+			height: 40%;
+			left: -20px;
+			bottom: -10px;
+		}
+
+		img.leaftwo{
+			position: absolute;
+			width: 40%;
+			height: 40%;
+			right: -60px;
+			bottom: -10px;
+		}
+
+		.details {
+			width: 350px;
+			max-width: 500px;
+
+			.socials {
+				// padding-bottom: $padding-half;
+				gap: 10px;
+
+				.social {
+					width: 50px;
+					height: 50px;
+					border: 1px solid color(text);
+					border-radius: 50%;
+				}
+			}
+
+			.title {
+				@include title;
+				color: color(accent);
+				font-size: 2rem;
+				font-weight: 600;
+				letter-spacing: -0.03em;
+			}
+
+			.message {
+				text-align: center;
+				padding-bottom: 1rem;
+			}
+
+			.input-group {
+				margin-bottom: 1.2rem;
+
+
+				.input-group-text {
+					border: none;
+					background-color: color(background);
+					border-radius: 0;
+				}
+			}
+
+			input {
+				border: none;
+				padding: .6rem;
+				border-radius: 0;
+				outline: none;
+				background-color: color(background);
+				box-shadow: none;
+			}
+
+			.cta {
+				@include button;
+				display: block;
+				margin: 0 auto;
+			}
+		}
+	}
+}

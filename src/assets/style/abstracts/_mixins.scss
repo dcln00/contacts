@@ -1,3 +1,12 @@
+@mixin component {
+	padding: {
+		top: $padding;
+		bottom: $padding;
+	}
+
+	;
+}
+
 @mixin button {
 	background-color: color(accept);
 	color: color(white);
@@ -5,4 +14,33 @@
 	border: none;
 	padding: .5rem 1rem;
 	border-radius: 10px;
+	transition: .2s;
+
+	&:hover {
+		opacity: .9;
+	}
+}
+
+@mixin title {
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: color(accent);
+	padding: .9rem;
+}
+
+@mixin logo {
+	color: color(accent);
+	text-transform: uppercase;
+	position: relative;
+
+	&:after {
+		content: "by Nii Aryeh";
+		position: absolute;
+		top: 17px;
+		left: 13px;
+		text-transform: lowercase;
+		white-space: nowrap;
+		font-size: .8rem;
+	}
 }

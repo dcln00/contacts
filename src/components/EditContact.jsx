@@ -4,12 +4,12 @@ import Button from "./Button";
 
 const darkTheme = [
 	{
-		backgroundColor: '#1e1e1e'
+		backgroundColor: "#1e1e1e",
 	},
 	{
 		backgroundColor: "#222222",
 		color: "#ededed",
-	}
+	},
 ];
 
 function validatePhoneNumber(phoneNumber) {
@@ -35,58 +35,41 @@ function birthdayStr(birthday) {
 	return `${day}${daySuffix} ${monthName} ${year}`;
 }
 
-export default function AddContact({ onAddContact }) {
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [phone, setPhone] = useState("");
-	const [email, setEmail] = useState("");
-	const [location, setLocation] = useState("");
-	const [birthday, setBirthday] = useState("");
-	const [tags, setTags] = useState("");
-	const [notes, setNotes] = useState(``);
-	const {darkMode} = useDarkMode()
+function EditContact({selected, setContacts, contacts, onShowEditForm, setSelected}) {
+	const [firstName, setFirstName] = useState(selected.firstName);
+	const [lastName, setLastName] = useState(selected.lastName);
+	const [phone, setPhone] = useState(selected.phone);
+	const [email, setEmail] = useState(selected.email);
+	const [location, setLocation] = useState(selected.location);
+	const [birthday, setBirthday] = useState(selected.birthday);
+	const [tags, setTags] = useState(selected.tags);
+	const [notes, setNotes] = useState(selected.notes);
+	const { darkMode } = useDarkMode()
 
 	useEffect(() => {
-		document.title = 'Add Contact - Contacts by Nii Aryeh'
+		document.title = "Add Contact - Contacts by Nii Aryeh";
 
-		return () => document.title = 'Contacts by Nii Aryeh'
-	}, [])
+		return () => (document.title = "Contacts by Nii Aryeh");
+	}, []);
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		const id = Math.random().toString(16).slice(2, 7);
-
 		if (!firstName || !lastName || !phone) return;
 
 		if(validatePhoneNumber(phone)) return alert('Enter a valid Phone number')
 
-		const contact = {
-			id,
-			firstName: firstName.replace(/^./, firstName[0].toUpperCase()),
-			lastName: lastName.replace(/^./, lastName[0].toUpperCase()),
-			phone,
-			email,
-			location,
-			birthday: birthdayStr(birthday),
-			tags,
-			notes,
-		};
+		const id = selected.id
 
-		onAddContact(contact);
+		setContacts(() => contacts.map(x => x.id === selected.id ? {...x, firstName: firstName.replace(/^./, firstName[0].toUpperCase()), lastName: lastName.replace(/^./, lastName[0].toUpperCase()), phone, email, location, birthday: birthdayStr(birthday), tags, notes} : x))
 
-		setFirstName("");
-		setLastName("");
-		setPhone("");
-		setEmail("");
-		setLocation("");
-		setBirthday("");
-		setTags("");
-		setNotes(``);
+		setSelected({id, firstName: firstName.replace(/^./, firstName[0].toUpperCase()), lastName: lastName.replace(/^./, lastName[0].toUpperCase()), phone, email, location, birthday: birthdayStr(birthday), tags, notes})
+
+		onShowEditForm(false)
 	}
 
 	return (
 		<div id="addcontact" style={darkMode ? darkTheme.at(0) : {}}>
-			<h3>Add Contact</h3>
+			<h3>Edit Contact</h3>
 			<form onSubmit={handleSubmit}>
 				<div className="row">
 					<div className="col-sm-6">
@@ -118,7 +101,7 @@ export default function AddContact({ onAddContact }) {
 							type="tel"
 							value={phone.replace(
 								/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/,
-								"$1$2$3 $4$5$6 $7$8$9$10"
+								"$1$2$3$4$5$6$7$8$9$10"
 							)}
 							// pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
 							onChange={(e) => setPhone(e.target.value)}
@@ -147,7 +130,7 @@ export default function AddContact({ onAddContact }) {
 						<label>Birthday</label>
 						<br />
 						<input
-							type="date"
+							type="text"
 							value={birthday}
 							max="2005-01-01"
 							onChange={(e) => setBirthday(e.target.value)}
@@ -171,10 +154,14 @@ export default function AddContact({ onAddContact }) {
 						></textarea>
 					</div>
 					<div className="col-sm-3 align-self-end">
-						<Button customStyle={darkMode ? darkTheme.at(1) : {}}>Add Contact</Button>
+						<Button customStyle={darkMode ? darkTheme.at(1) : {}}>
+							Save
+						</Button>
 					</div>
 				</div>
 			</form>
 		</div>
 	);
 }
+
+export default EditContact;

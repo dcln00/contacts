@@ -1,0 +1,50 @@
+#jumbotron {
+	background-color: color(jumbo-bg);
+	height: 520px;
+	color: color(jumbo-txt);
+	position: relative;
+	overflow: hidden;
+	background: radial-gradient(ellipse at top, color(jumbo-blur), transparent),
+				radial-gradient(ellipse at top right, color(accent), transparent),
+				radial-gradient(ellipse at bottom left, color(accent), transparent),
+           		radial-gradient(ellipse at bottom, color(jumbo-blur), transparent);
+
+	.info {
+		isolation: isolate;
+		height: 520px;
+
+		.title {
+			font-size: 3rem;
+			font-weight: 800;
+			letter-spacing: -0.023em;
+			line-height: 47px;
+
+			padding: {
+				top: 1rem;
+				bottom: 1rem;
+			}
+		}
+
+		.desc {
+			padding: {
+				bottom: 1rem;
+			}
+		}
+
+		.cta {
+			@include button;
+			background-color: #30d8a0;
+		}
+	}
+
+	.image {
+		isolation: isolate;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			object-position: center center;
+		}
+	}
+}

@@ -1,8 +1,9 @@
-Header {
+header {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 
 	.logo {
+		@include logo;
 		text-transform: uppercase;
 		color: color(text);
 		// font-family: $heading;

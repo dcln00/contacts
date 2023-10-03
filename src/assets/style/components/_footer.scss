@@ -1,0 +1,8 @@
+footer {
+	padding: $padding-half 0;
+	background-color: color(background);
+
+	.logo {
+		@include logo;
+	}
+}

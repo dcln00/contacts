@@ -1,19 +1,28 @@
 $colors: (
-	theme: ('text': #a5a5a5,
+	light: (
+		'text': #a5a5a5,
 		'background': #f7f7f7,
 		'accept':#30d8a0,
+		'accent':#30d8a0,
 		'decline': #e25959,
 		'notes': #eae8e8,
 		'white': #fff,
 		'black': #000,
+		'jumbo-bg': #30d8a0,
+		'jumbo-txt': #f7f7f7,
+		'jumbo-blur': #71eabb
 	),
+	dark:('background': #1e1e1e,
+		'button': #ededed,
+		'text': #fff,
+	)
 );
 
 :root {
 
-	@each $theme,
-	$color in map-get($colors, theme) {
-		--#{$theme}: #{$color};
+	@each $light,
+	$color in map-get($colors, light) {
+		--#{$light}: #{$color};
 	}
 }
 

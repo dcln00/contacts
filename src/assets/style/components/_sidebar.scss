@@ -1,0 +1,51 @@
+#entry {
+	.sidebar {
+		height: 100vh;
+		background-color: color(accent);
+		position: relative;
+		color: color(white);
+		padding: 5rem;
+		background: radial-gradient(ellipse at top left, color(jumbo-blur), transparent),
+					radial-gradient(ellipse at top right, color(accent), transparent),
+           			radial-gradient(ellipse at bottom, color(jumbo-blur), transparent);
+
+		.details {
+			padding-bottom: 10rem;
+
+			.logo {
+				@include logo;
+				color: color(white);
+				position: absolute;
+				bottom: 25px;
+				right: 25px;
+			}
+
+			.welcome {
+				@include title;
+				color: color(white);
+				font-size: 2rem;
+				font-weight: 600;
+				letter-spacing: -0.01em;
+			}
+
+			.message {
+				text-align: center;
+				padding-bottom: 2rem;
+			}
+
+			.cta {
+				@include button;
+				background-color: transparent;
+				border: 1px solid color(white);
+				display: block;
+				margin: 0 auto;
+				transition: .3s;
+
+				&:hover {
+					background-color: transparent;
+					opacity: .8;
+				}
+			}
+		}
+	}
+}
