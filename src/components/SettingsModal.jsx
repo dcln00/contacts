@@ -34,7 +34,7 @@ export default function SettingsModal({
 
 		setTimeout(async () => {
 			const { error } = await supabase.auth.signOut();
-			sessionStorage.removeItem("user");
+			localStorage.removeItem("user");
 			setUser(false);
 			navigate("/");
 			setLoading(false)
