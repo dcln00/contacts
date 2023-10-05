@@ -75,7 +75,7 @@ const AppLayout = ({setUser, user}) => {
 			setSelected(null);
 		} else {
 			setSelected(selected);
-		}
+		} 
 	}
 
 	function handleEdit() {
