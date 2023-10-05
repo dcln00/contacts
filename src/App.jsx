@@ -13,12 +13,12 @@ function App() {
 	const [user, setUser] = useState(false);
 
 	if (user) {
-		sessionStorage.setItem("user", JSON.stringify(user));
+		localStorage.setItem("user", JSON.stringify(user));
 	}
 
 	useEffect(() => {
-		if (sessionStorage.getItem("user")) {
-			let data = JSON.parse(sessionStorage.getItem("user"));
+		if (localStorage.getItem("user")) {
+			let data = JSON.parse(localStorage.getItem("user"));
 			setUser(data);
 		}
 	}, []);

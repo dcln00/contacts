@@ -48,6 +48,8 @@ export default function SettingsModal({
 
 		if (confirmed) setContacts([]);
 
+		if (!confirmed) return
+
 		onShowSettings(false);
 	}
 

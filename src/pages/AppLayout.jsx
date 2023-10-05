@@ -33,13 +33,13 @@ const AppLayout = ({setUser, user}) => {
 	const [showEditForm, setShowEditForm] = useState(false)
 
 	useEffect(() => {
-		localStorage.setItem("saveSettings", sort);
-	}, [sort]);
-
-	useEffect(() => {
 		const data = localStorage.getItem("saveSettings");
 		setSort(data);
 	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("saveSettings", sort);
+	}, [sort]);
 
 	useEffect(() => {
 		const data = localStorage.getItem("contactsKey");
