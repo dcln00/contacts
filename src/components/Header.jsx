@@ -21,7 +21,7 @@ function getGreetingMessage(username) {
 	}
   }
 
-const Header = ({ onClick, onShowAddForm, contacts, showSettings, token }) => {
+const Header = ({ onClick, onShowAddForm, contacts, showSettings, user }) => {
 	const { darkMode } = useDarkMode()
 	const numberContacts = contacts.length;
 	return (
@@ -36,7 +36,7 @@ const Header = ({ onClick, onShowAddForm, contacts, showSettings, token }) => {
 			) : (
 				<div className="description ms-5">{numberContacts} Contacts</div>
 			)}
-			<div className="ms-auto">{getGreetingMessage(token.user.user_metadata.username)}</div>
+			<div className="ms-auto">{getGreetingMessage(user.session?.user.user_metadata.username)}</div>
 			<div
 				className={
 					onShowAddForm

@@ -17,24 +17,6 @@ function validatePhoneNumber(phoneNumber) {
 	return !pattern.test(phoneNumber);
 }
 
-function birthdayStr(birthday) {
-	const date = new Date(birthday);
-	const day = date.getDate();
-	const year = date.getFullYear();
-	const monthName = date.toLocaleString("default", { month: "long" });
-  
-	let daySuffix = "th";
-	if (day in [1, 21, 31]) {
-	daySuffix = "st";
-	} else if (day in [2, 22]) {
-	daySuffix = "nd";
-	} else if (day in [3, 23]) {
-	daySuffix = "rd";
-	}
-  
-	return `${day}${daySuffix} ${monthName} ${year}`;
-}
-
 function EditContact({selected, setContacts, contacts, onShowEditForm, setSelected}) {
 	const [firstName, setFirstName] = useState(selected.firstName);
 	const [lastName, setLastName] = useState(selected.lastName);
@@ -60,9 +42,9 @@ function EditContact({selected, setContacts, contacts, onShowEditForm, setSelect
 
 		const id = selected.id
 
-		setContacts(() => contacts.map(x => x.id === selected.id ? {...x, firstName: firstName.replace(/^./, firstName[0].toUpperCase()), lastName: lastName.replace(/^./, lastName[0].toUpperCase()), phone, email, location, birthday: birthdayStr(birthday), tags, notes} : x))
+		setContacts(() => contacts.map(x => x.id === selected.id ? {...x, firstName: firstName.replace(/^./, firstName[0].toUpperCase()), lastName: lastName.replace(/^./, lastName[0].toUpperCase()), phone, email, location, birthday, tags, notes} : x))
 
-		setSelected({id, firstName: firstName.replace(/^./, firstName[0].toUpperCase()), lastName: lastName.replace(/^./, lastName[0].toUpperCase()), phone, email, location, birthday: birthdayStr(birthday), tags, notes})
+		setSelected({id, firstName: firstName.replace(/^./, firstName[0].toUpperCase()), lastName: lastName.replace(/^./, lastName[0].toUpperCase()), phone, email, location, birthday, tags, notes})
 
 		onShowEditForm(false)
 	}

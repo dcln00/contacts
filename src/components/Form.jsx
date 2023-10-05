@@ -1,10 +1,22 @@
 import { useState } from "react";
 import Button from "./Button";
 import { useLocation } from "react-router-dom";
+import { useDarkMode } from "../context/DarkModeContext";
+
+const darkTheme = [
+	{
+		color: '#ededed'
+	},
+	{
+		backgroundColor: "#ededed",
+		color: "#222222",
+	}
+];
 
 function Form({ title, message, username, email, password, setEmail, setPassword, setUsername, handleSubmit }) {
 	const [showPassword, setShowPassword] = useState(false)
 	const { pathname } = useLocation();
+	const {darkMode} = useDarkMode()
 
 	function handleShowPassword() {
 		setShowPassword(x => !x)
@@ -13,7 +25,7 @@ function Form({ title, message, username, email, password, setEmail, setPassword
 	return (
 		<div className="col-sm-8 form d-flex align-items-center justify-content-center">
 			<div className="details">
-				<div className="title">{title}</div>
+				<div className="title" style={darkMode ? darkTheme.at(0) : {}}>{title}</div>
 				<div className="socials d-flex justify-content-center">
 					{/* <Google /> */}
 					{/* <Github /> */}
@@ -68,7 +80,7 @@ function Form({ title, message, username, email, password, setEmail, setPassword
 						<span className="input-group-text" onClick={handleShowPassword}><EyeIcon/></span>
 					</div>
 
-					<Button customClass="cta">{pathname !== '/signup' ? 'Log in' : 'Sign up'}</Button>
+					<Button customClass="cta" customStyle={darkMode ? darkTheme.at(1) : {}}>{pathname !== '/signup' ? 'Log in' : 'Sign up'}</Button>
 				</form>
 			</div>
 		</div>

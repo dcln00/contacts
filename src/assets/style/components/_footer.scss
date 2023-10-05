@@ -5,4 +5,8 @@ footer {
 	.logo {
 		@include logo;
 	}
+
+	.switch {
+		cursor: pointer;
+	}
 }

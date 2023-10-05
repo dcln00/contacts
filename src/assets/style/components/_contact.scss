@@ -60,8 +60,13 @@
 		right: 2rem;
 		bottom: 2rem;
 
-		button {
+		button:nth-child(1) {
 			@include button;
+			background-color: color(accept);
+		}
+
+		button:nth-child(2) {
+		@include button;
 		background-color: color(decline);
 		}
 		

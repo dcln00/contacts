@@ -6,18 +6,20 @@ import Signup from "./auth/Signup.jsx";
 import { useEffect, useState } from "react";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import PrivateRoute from "./components/PrivateRoute";
+import RouteGuard from "./components/RouteGuard";
+import Error404 from "./pages/error404";
 
 function App() {
-	const [token, setToken] = useState(false);
+	const [user, setUser] = useState(false);
 
-	if (token) {
-		sessionStorage.setItem("token", JSON.stringify(token));
+	if (user) {
+		sessionStorage.setItem("user", JSON.stringify(user));
 	}
 
 	useEffect(() => {
-		if (sessionStorage.getItem("token")) {
-			let data = JSON.parse(sessionStorage.getItem("token"));
-			setToken(data);
+		if (sessionStorage.getItem("user")) {
+			let data = JSON.parse(sessionStorage.getItem("user"));
+			setUser(data);
 		}
 	}, []);
 
@@ -26,21 +28,15 @@ function App() {
 			<DarkModeProvider>
 				<BrowserRouter>
 					<Routes>
-						<Route path="/" element={<Index token={token} />} />
-
-						<Route
-							path="app"
-							element={
-								<PrivateRoute token={token}>
-									<AppLayout setToken={setToken} token={token}/>
-								</PrivateRoute>
-							}
-						/>
-
-						{!token && (
-							<Route path="login" element={<Login setToken={setToken} />} />
-						)}
-						{!token && <Route path="signup" element={<Signup />} />}
+						<Route path="/" element={<Index user={user} />} />
+						<Route element={<PrivateRoute user={user}  />}>
+							<Route path="app" element={<AppLayout user={user} setUser={setUser} />} />
+						</Route>
+						<Route element={<RouteGuard user={user}/>}>
+							<Route path="login" element={<Login setUser={setUser} />} />
+							<Route path="signup" element={<Signup />} />
+						</Route>
+						<Route path="*" element={<Error404 />} />
 					</Routes>
 				</BrowserRouter>
 			</DarkModeProvider>

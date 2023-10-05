@@ -4,8 +4,9 @@ import Sidebar from "../components/Sidebar";
 import { supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
+import BackgroundWrapper from "../components/BackgroundWrapper";
 
-function Login({ setToken }) {
+function Login({ setUser }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -17,21 +18,6 @@ function Login({ setToken }) {
 
 		return () => (document.title = "Contacts by Nii Aryeh");
 	}, []);
-
-	// async function handleGithub() {
-	// 	try {
-	// 		const { data, error } = await supabase.auth.signInWithOAuth({
-	// 			provider: "github",
-	// 			options: {
-	// 				redirectTo: "http://localhost:5173/app",
-	// 			},
-	// 		});
-	// 		if (error) throw error;
-	// 		setToken(data);
-	// 	} catch (err) {
-	// 		alert(err);
-	// 	}
-	// }
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -45,7 +31,7 @@ function Login({ setToken }) {
 			});
 
 			if (error) throw error;
-			setToken(data);
+			setUser(data);
 			navigate("/app");
 		} catch (err) {
 			alert(err);
@@ -58,6 +44,7 @@ function Login({ setToken }) {
 
 	return (
 		<>
+			<BackgroundWrapper />
 			<div className="container-fluid" id="entry">
 				<div className="row">
 					<Sidebar welcome="Hello!" button="Signup" link="/signup">

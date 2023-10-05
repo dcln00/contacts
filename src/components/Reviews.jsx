@@ -1,3 +1,4 @@
+import { useDarkMode } from "../context/DarkModeContext";
 import UserReview from "./UserReview";
 
 const userReviews = [
@@ -24,12 +25,22 @@ const userReviews = [
 	},
 ];
 
-
+const darkTheme = [
+	{
+		color: '#ededed'
+	},
+	{
+		backgroundColor: "#ededed",
+		color: "#222222",
+	}
+];
 
 function Reviews() {
+	const {darkMode} = useDarkMode()
+
 	return (
 		<section id="reviews" className="container">
-			<div className="title">What people say about us</div>
+			<div className="title" style={darkMode ? darkTheme.at(0) : {}}>What people say about us</div>
 			<div className="review">
 				<div className="row">
 					{userReviews.map((x, i) => (

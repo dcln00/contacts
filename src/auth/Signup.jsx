@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar";
 
 import { supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
+import BackgroundWrapper from "../components/BackgroundWrapper";
 
 function Signup() {
 	const [username, setUsername] = useState("");
@@ -57,6 +58,7 @@ function Signup() {
 
 	return (
 		<>
+			<BackgroundWrapper />
 			<div className="container-fluid" id="entry">
 				<div className="row">
 					<Sidebar welcome="Welcome!" button="Log in" link="/login">

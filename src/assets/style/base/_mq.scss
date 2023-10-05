@@ -1,4 +1,27 @@
 @media screen and (max-width: $breakpoint-mp) {
+
+	#jumbotron {
+		height: 50vh;
+
+		.info {
+			height: 50vh;
+		}
+	}
+
+	#learn-more {
+		.desc {
+			width: 90%;
+		}
+	}
+
+	#reviews {
+		.review {
+			.review-component {
+				margin-bottom: 2rem;
+			}
+		}
+	}
+
 	.app {
 		#settings {
 			.settings-modal {

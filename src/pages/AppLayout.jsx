@@ -24,7 +24,7 @@ Contacts was created and developed by Nii Aryeh.`,
 	},
 ];
 
-const AppLayout = ({setToken, token}) => {
+const AppLayout = ({setUser, user}) => {
 	const [contacts, setContacts] = useState(initialContact)
 	const [selected, setSelected] = useState(null)
 	const [showAddForm, setShowAddForm] = useState(false)
@@ -32,7 +32,14 @@ const AppLayout = ({setToken, token}) => {
 	const [sort, setSort] = useState('input')
 	const [showEditForm, setShowEditForm] = useState(false)
 
-	
+	useEffect(() => {
+		localStorage.setItem("saveSettings", sort);
+	}, [sort]);
+
+	useEffect(() => {
+		const data = localStorage.getItem("saveSettings");
+		setSort(data);
+	}, []);
 
 	useEffect(() => {
 		const data = localStorage.getItem("contactsKey");
@@ -82,14 +89,14 @@ const AppLayout = ({setToken, token}) => {
 	return (
 		<div className="app">
 			
-			{showSettings && <Settings setToken={setToken} onShowSettings={handleShowSettings} setContacts={setContacts} contacts={contacts} sort={sort} setSort={setSort} />}
+			{showSettings && <Settings setUser={setUser} onShowSettings={handleShowSettings} setContacts={setContacts} contacts={contacts} sort={sort} setSort={setSort} />}
 			<BackgroundWrapper />
 			<Header
 				onClick={handleAddForm}
 				onShowAddForm={showAddForm}
 				contacts={contacts}
 				showSettings={handleShowSettings}
-				token={token}
+				user={user}
 			/>
 			<main className="container">
 				<div className="main row">

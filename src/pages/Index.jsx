@@ -1,13 +1,15 @@
+import BackgroundWrapper from "../components/BackgroundWrapper"
 import Footer from "../components/Footer"
 import HeaderIndex from "../components/HeaderIndex"
 import Jumbotron from "../components/Jumbotron"
 import LearnMore from "../components/LearnMore"
 import Reviews from "../components/Reviews"
 
-function Index({token}) {
+function Index({user}) {
 	return (
 		<>
-			<HeaderIndex token={token} />
+			<BackgroundWrapper />
+			<HeaderIndex user={user} />
 			<Jumbotron />
 			<LearnMore />
 			<Reviews />

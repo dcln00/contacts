@@ -1,0 +1,20 @@
+#error {
+	height: 100vh;
+
+	.title {
+		padding: 1.2rem 0;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: color(accent);
+	}
+
+	a {
+		color: color(accent);
+	}
+
+	.button {
+		padding: 1rem 0;
+		text-align: center;
+	}
+}
