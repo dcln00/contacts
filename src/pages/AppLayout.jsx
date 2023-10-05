@@ -34,7 +34,7 @@ const AppLayout = ({setUser, user}) => {
 
 	useEffect(() => {
 		const data = localStorage.getItem("saveSettings");
-		setSort(data);
+		if(data !== null) setSort(data);
 	}, []);
 
 	useEffect(() => {
