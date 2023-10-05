@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import PrivateRoute from "./components/PrivateRoute";
 import RouteGuard from "./components/RouteGuard";
-import Error404 from "./pages/error404";
+import Error404 from "./pages/Error404";
 
 function App() {
 	const [user, setUser] = useState(false);
